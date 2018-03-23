@@ -426,17 +426,30 @@
 		background: #DC572E;
 	}
 
+	#image
+	{
+		margin: auto;
+	}
+
+	#buttonUp
+	{
+		margin-right: 10%;
+	}
+
 	#wrapper3
 	{
 		overflow: hidden;
 		padding: 0em 0em 8em 0em;
 		background: #FFF;
+		align-content: center;
+		
 	}
 	
 	#wrapper4
 	{
 		overflow: hidden;
 		padding: 8em 0em 4em 0em;
+		margin: auto;
 	}
 
 /*********************************************************************************/
