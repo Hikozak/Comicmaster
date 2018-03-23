@@ -117,7 +117,7 @@ Released   : 20140207
 		</div>
 	</div>
 </div>
-
+ 
 </div>
 <div id="wrapper3">
 	<div id="three-column" class="container">
@@ -130,6 +130,35 @@ Released   : 20140207
 		<a href="translate.html" class="button">Translate</a>
 	</div>
 	<div id="tbox3"> 
+            <body onload="ocrDemo.onLoadFunction()">
+                    <select name="choice" id="choice" size="3" onchange="createDoll(this.value)">
+                            <option value="0">Correlation(recommended)</option>
+                            <option value="1">Plaid</option>
+                            <option value="2">Binary</option>
+                            <option value="3">Edge</option>
+                            <option value="4">all lines</option>
+                        </select>
+                        <div id="display_here"></div>
+            <script>
+                        function createDoll(userChoice) {
+                            var output = document.getElementById("display_here");
+                            output.innerHTML = "";
+                        
+                            var links = [
+                                "./images/02-japanese-001-01.jpg",
+                                "./images/02-japanese-001-02.jpg",
+                                "./images/02-japanese-001-03.jpg",
+                                "./images/02-japanese-001-04.jpg",
+                                "./images/02-japanese-001.jpg"
+                            ];
+                        
+                            var choices = ["Correlation", "Plaid", "Binary", "Edge", "All"];
+                            var sentence = "<p>You picked a " + choices[userChoice] + " recognition.</p>"
+                            var img = '<img src="' + links[userChoice] + '">';
+                        
+                            output.innerHTML = sentence + img;
+                        }
+                    </script>
 
 	</div>
 
