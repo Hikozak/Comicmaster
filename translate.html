@@ -40,16 +40,39 @@ Released   : 20140207
 		</div>
 	</div>
 </div>
+<script>
+var backgroundImage = new Array(); 
+for(i = 0; i < 10; i++){
+backgroundImage[i] = 'images/dummychars/char' +(i+1) +'.png';
 
+}
+
+function displayAllImages() {
+ for (i=0;i<backgroundImage.length;i++) {
+    document.write("<li><img src='" + backgroundImage[i] + "' width='50' height='50'/><span>" );
+}
+}
+</script>
 </div>
+
 <div id="wrapper3">
 		<div id="three-column" class="container">
 		<div><span class="arrow-down"></span></div>
 		
 		<div id="tbox1">
+				<div>
+
+						<div class="backgoundImage">
+						<ul>
+							<script>displayAllImages();</script>
+						</ul>
+						</div>
+					
+					</div>
 		</div>
 
-		<div id="tbox2">
+		<div id="tbox2" style="display: inline;">
+				
 			<img src="images/1.png" alt="translate">
 		</div>
 
@@ -72,7 +95,7 @@ Released   : 20140207
 		<div id="tbox2">
 		<div class="title">
 			<h2>Original Characters</h2>
-		</div>
+
 		<textarea rows="2" cols="50">
 		
 		</textarea>
@@ -87,7 +110,9 @@ Released   : 20140207
 		</textarea>
 		</div>
 	</div>
+	
 </div>
+
 <div id="wrapper4">
 	<div id="footer" class="container">
 		<div>
