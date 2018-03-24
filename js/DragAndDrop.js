@@ -18,6 +18,9 @@ var DragAndDrop = (function(){
             },
             validation: {
                 allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
+            },
+            callbacks: {
+                onComplete: function(id, name, responseJSON, maybeXhr) {console.log(responseJSON)}
             }
         });
     }

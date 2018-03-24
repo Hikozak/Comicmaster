@@ -102,6 +102,7 @@ Released   : 20140207
 </head>
 <body>
 <div id="header-wrapper">
+    
 	<div id="header" class="container">
 		<div id="logo">
 			<h1><a href="index.html">Comicmaster</a></h1>
@@ -117,8 +118,44 @@ Released   : 20140207
 		</div>
 	</div>
 </div>
- 
+<img src="" style="display:none" height="200" id="image">
+<div id ="visual">
+<input type ="file" onchange="showImage.call(this)">
+<script>
+
+var srcImage = new Array(); 
+var imahe = 0;
+    function showImage()
+    {
+        if(this.files && this.files[0])
+        {
+            var obj = new FileReader();
+            obj.onload = function(data)
+            {
+                var image = document.getElementById("image");
+                image.src = data.target.result;
+                image.style.display = "block";
+                srcImage[imahe] = image;
+                imahe++;
+            }
+            obj.readAsDataURL(this.files[0]);
+        }
+
+       
+    }
+    function displayAllImages() {
+    for (i=0;i<backgroundImage.length;i++) {
+    document.write("<li><img src='" + src[i] + "' width='50' height='50'/><span>" );
+}
+}
+</script>
 </div>
+</div>
+<div class="backgoundImage">
+        <ul>
+            <script>displayAllImages();</script>
+        </ul>
+        </div>
 <div id="wrapper3" style="display: block; margin: auto;">
 	<div id="three-column" class="container" >
 	<div><span class="arrow-down"></span></div>
@@ -159,6 +196,8 @@ Released   : 20140207
                     </script>
 		
     </div>
+
+    
     <div id="imglist">
             <a href="javascript:nextImage('mainImg')"><img src="images/next_img.png" alt=""></a>
     <script>
@@ -177,7 +216,7 @@ Released   : 20140207
 
     for(var i = 0; i < imgArray.length;i++)
     {
-        if(imgArray[i].src == img.src) // << check this
+        if(imgArray[i].src == img.src)
         {
             if(i === imgArray.length){
                 document.getElementById(element).src = imgArray[0].src;
