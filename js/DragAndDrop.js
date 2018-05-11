@@ -8,7 +8,7 @@ var DragAndDrop = (function(){
             element: document.getElementById("fine-uploader-gallery"),
             template: 'qq-template-gallery',
             request: {
-                endpoint: '/server/uploads'
+                endpoint: '/uploadimg'
             },
             thumbnails: {
                 placeholders: {

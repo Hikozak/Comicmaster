@@ -644,6 +644,12 @@
 		
 	}
 		
+    #translatedimg{
+		float: left;
+		width: 320px;
+		padding: 80px 40px 80px 40px;
+    }
+
 	#three-column #tbox1,
 	#three-column #tbox2,
 	#three-column #tbox3

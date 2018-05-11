@@ -101,6 +101,12 @@ Released   : 20140207
     </script>
 </head>
 <body>
+<div class="content">
+		<h1>Image Upload</h1>
+		<div class="dropzone" id="dropzone"><img id="img" src="" />Drag Images here to upload</div>
+		<div id="uploads"><br>List of uploads</div>
+	</div>
+    
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
@@ -172,22 +178,22 @@ Released   : 20140207
     imgArray[2].src = 'images/japblurr.jpg';
 
     function nextImage(element)
-{
-    var img = document.getElementById(element);
-
-    for(var i = 0; i < imgArray.length;i++)
     {
-        if(imgArray[i].src == img.src) // << check this
+        var img = document.getElementById(element);
+
+        for(var i = 0; i < imgArray.length;i++)
         {
-            if(i === imgArray.length){
-                document.getElementById(element).src = imgArray[0].src;
+            if(imgArray[i].src == img.src) // << check this
+            {
+                if(i === imgArray.length){
+                    document.getElementById(element).src = imgArray[0].src;
+                    break;
+                }
+                document.getElementById(element).src = imgArray[i+1].src;
                 break;
             }
-            document.getElementById(element).src = imgArray[i+1].src;
-            break;
         }
     }
-}
     </script>
     </div>
 	<div id="fine-uploader-gallery" ></div>
@@ -231,6 +237,76 @@ Released   : 20140207
 <script>
     $(document).ready(function(){
         DragAndDrop.init();
+        
+        (function(){
+			var dropzone = document.getElementById('dropzone');
+
+			var displayUploads = function(data){
+				var uploads = document.getElementById('uploads'),
+				anchor,
+				x;
+
+				for(x = 0; x < data.length; x++){
+					anchor = document.createElement('a');
+					anchor.href = data[x].file;
+				}
+			};
+
+			var upload = function(files){
+//                console.log(files);
+//				var formData = new FormData(),
+//				xhr = new XMLHttpRequest(),
+//				x;
+//
+//				for(x = 0; x < files.length; x++){
+//					formData.append('file[]', files[x]);
+//				}
+//
+//				xhr.open('post','upload.php');
+//				xhr.send(formData);
+                
+                var formData = new FormData();
+                formData.append("fileToUpload", files[0]);
+                
+                console.log(files[0]);
+                console.log(formData);
+                
+                $.ajax({
+                   url: "/uploadimg",
+                   type: "POST",
+                   data: formData,
+                   processData: false,
+                   contentType: false,
+                   success: function(response) {
+                       var data = JSON.parse(response);
+                       console.log(data);
+//                       $("#img").attr('src', "data:image/png;base64, " + response);
+                   },
+                   error: function(jqXHR, textStatus, errorMessage) {
+                       console.log(errorMessage); // Optional
+                   }
+                });
+			};
+
+
+			dropzone.ondrop = function(e){
+				e.preventDefault();
+				this.className = 'dropzone';
+				upload(e.dataTransfer.files);
+			};
+
+			dropzone.ondragover = function(){
+				this.className = 'dropzone dragover';
+				return false;
+			};
+
+			dropzone.ondragleave = function(){
+				this.className = 'dropzone';
+				return false;
+			};
+
+
+		}());
     });
 </script>
 </body>

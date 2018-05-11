@@ -22,7 +22,7 @@ Released   : 20140207
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 <style>
-    #tbox2{
+    #translatedimg{
         position: relative;
     }
     #textblock1, #textblock2{
@@ -94,10 +94,10 @@ Released   : 20140207
         </div>
 -->
 
-        <div id="tbox2" style="display: inline;">
+        <div id="translatedimg" style="display: inline;">
             <div id="textblock1"></div>
             <div id="textblock2"></div>
-            <img src="images/1.jpg" alt="translate">
+            <img src="uploads/1.jpg" alt="translate">
         </div>
 
         <div id="tbox3">
@@ -113,41 +113,26 @@ Released   : 20140207
 		<div class="title">
 			<h2>OG Characters</h2>
 		</div>
-		<textarea rows="9" cols="35" id="block1">元来日本語は漢文に倣い、文字を上
-から下へ、また行を右から左へと進
-めて表記を行っていた。漢字と仮名
-の筆順も縦書きを前提としており
-横書き不能な書体も存在する。</textarea>
-		<textarea rows="9" cols="35" id="block2">元来日本語は漢文に倣い、文字を上
-から下へ、また行を右から左へと進
-めて表記を行っていた。漢字と仮名
-の筆順も縦書きを前提としており
-横書き不能な書体も存在する。</textarea>
+		<textarea id = "og1" rows="9" cols="35" id="block1"></textarea>
+		<textarea id = "og2" rows="9" cols="35" id="block2"></textarea>
 		</div>
 
 		<div id="tbox2">
 		<div class="title">
 			<h2>Romaji</h2>
 		</div>
-		<textarea rows="9" cols="35">Ganrai nihongo wa kanbun ni narai, moji o ue kara shita e, mata gyō o migi kara hidari e to Suzumu-mete hyōki o okonatte ita. Kanji to kana no hitsujun mo tate-gaki o zentei to shite ori yokogaki funōna shotai mo sonzai suru.</textarea>
-		<textarea rows="9" cols="35">Ganrai nihongo wa kanbun ni narai, moji o ue kara shita e, mata gyō o migi kara hidari e to Suzumu-mete hyōki o okonatte ita. Kanji to kana no hitsujun mo tate-gaki o zentei to shite ori yokogaki funōna shotai mo sonzai suru.</textarea>
+		<textarea id = "rom1" rows="9" cols="35"></textarea>
+		<textarea id = "rom2" rows="9" cols="35"></textarea>
         </div>
         
 		<div id="tbox3">
 		<div class="title">
 			<h2>Translation</h2>
 		</div>
-		<textarea rows="9" cols="40">Originally Japanese imitated Chinese scripts, letters up
-Go downwards, also line from right to left
-I was writing a note for the first time. Kanji and Kana
-The stroke order also assumes vertical writing
-There is also a typeface that can not be written horizontally.</textarea>
-		<textarea rows="9" cols="40">Originally Japanese imitated Chinese scripts, letters up
-Go downwards, also line from right to left
-I was writing a note for the first time. Kanji and Kana
-The stroke order also assumes vertical writing
-There is also a typeface that can not be written horizontally.</textarea>
+		<textarea id = "trans1" rows="9" cols="40"></textarea>
+		<textarea id = "trans2" rows="9" cols="40"></textarea>
 		</div>
+		
 	</div>
 	
 </div>
@@ -187,7 +172,40 @@ There is also a typeface that can not be written horizontally.</textarea>
         }, function(){
             $("#textblock2").hide();
         });
+        
+        
+        var og = ["元来日本語は漢文に倣い、文字を上から下へ、また行を右から左へと進", "めて表記を行っていた。漢字と仮名の筆順も縦書きを前提としており", "横書き不能な書体も存在する。"];
+        var rom = ["Ganrai nihongo wa kanbun ni narai, moji o ue kara shita e,", "mata gyō o migi kara hidari e to Suzumu-mete hyōki o okonatte ita.", " Kanji to kana no hitsujun mo tate-gaki o zentei to shite ori yokogaki funōna shotai mo sonzai suru."];
+        var trans = ["Originally Japanese imitated Chinese scripts, letters upGo downwards, also line from right to left", "Originally Japanese imitated Chinese scripts, letters upGo downwards, also line from right to left", "There is also a typeface that can not be written horizontally."];
+
+        var item1 = og[Math.floor(Math.random()*og.length)];
+        var item2 = rom[Math.floor(Math.random()*rom.length)];
+        var item3 = trans[Math.floor(Math.random()*trans.length)];
+
+        var res1 = item2.split("");
+        var res2 = item2.split(" ");
+        
+        var biggest = res1.length > res2.length ? res1.length : res2.length;
+        
+        
+        document.getElementById("og1").value = item1;
+        document.getElementById("og2").value = item1;
+
+        document.getElementById("rom1").value = item2;
+        document.getElementById("rom2").value = item2;
+
+        document.getElementById("trans1").value = item3;
+        document.getElementById("trans2").value = item3;
+        
+        
+        
+        
     });
+    
+    
+
+
+    
 </script>
 </body>
 </html>
